@@ -14,42 +14,42 @@ export const icons = [
 
   {
     label: "Random",
-    icon: "./assets/icons/magic-box.png" //pink
+    icon: "assets/icons/magic-box.png" //pink
   },
 
   {
     label: "Science",
-    icon: "./assets/icons/bottle2.png" // red
+    icon: "assets/icons/bottle2.png" // red
   },
 
   {
     label: "Sports",
-    icon: "./assets/icons/golf.png" //  yellow
+    icon: "assets/icons/golf.png" //  yellow
   },
 
   {
     label: "History",
-    icon: "./assets/icons/book10.png" // green
+    icon: "assets/icons/book10.png" // green
   },
 
     {
     label: "Arts & Culture",
-    icon: "./assets/icons/palett.png" // purple
+    icon: "assets/icons/palett.png" // purple
   },
 
     {
     label: "Entertainment",
-    icon: "./assets/icons/tv.png" // light blue
+    icon: "assets/icons/tv.png" // light blue
   },
 
     {
     label: "Technology",
-    icon: "./assets/icons/boot.png" // dark blue
+    icon: "assets/icons/boot.png" // dark blue
   },
 
   {
     label: "Geography",
-    icon: "./assets/icons/pn3.png" // orange
+    icon: "assets/icons/pn3.png" // orange
   }
 ];
 
