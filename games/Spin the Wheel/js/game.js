@@ -51,7 +51,7 @@ function renderWheel() {
           <ul id="leaderboard-list"></ul>
           <div class="leaderboard-wrapper">
             <div class="leaderboard"> All Players </div>
-            <button> <img src="./assets/icons/trophy.png" /> </button>
+            <button> <img src="../assets/icons/trophy.png" /> </button>
           </div>
         </div>
       </div>
