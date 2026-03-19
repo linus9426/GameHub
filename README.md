@@ -1,4 +1,4 @@
-🎮 GameHub
+🎮 **GameHub**
 
 ⚠️ This project is currently under development. Features and games may change as the project evolves.
 
@@ -7,11 +7,11 @@ It acts as a central platform where users can sign in, play mini-games, and comp
 
 The platform integrates user authentication and stores scores using modern backend services.
 
-🌐 Live Demo
+🌐 **Live Demo**
 
 https://linus9426.github.io/GameHub/
 
-🚀 Features
+🚀 **Features**
 
 * User authentication using Firebase Authentication
 
@@ -22,7 +22,7 @@ https://linus9426.github.io/GameHub/
 * Interactive UI with dynamic JavaScript game logic
   
 
-🎮 Included Games:
+🎮 **Included Games**
 
   🧠 Memory Game
   
@@ -45,7 +45,7 @@ https://linus9426.github.io/GameHub/
   * Score tracking and leaderboard
   
   
-🛠 Technologies Used
+🛠 **Technologies Used**
 
 * HTML5
 
@@ -59,7 +59,7 @@ https://linus9426.github.io/GameHub/
 
 * Cloudflare Workers
 
-📂 Project Structure
+📂 **Project Structure**
 ```
 GameHub/
 │
@@ -74,3 +74,7 @@ GameHub/
     ├── memory-game/
     └── spin-the-wheel/
 ```
+
+**License**
+
+© 2025 LILLO. All rights reserved. You may view the code, but copying, modifying, or redistributing without permission is prohibited.
