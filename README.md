@@ -29,7 +29,7 @@ The platform integrates user authentication and stores scores using modern backe
 
 🎮 **Included Games**
 
-Memory Game
+- Memory Game
   
   * Card matching game with timer
   
@@ -39,7 +39,7 @@ Memory Game
   
   * Supabase leaderboard
 
-Spin the Wheel
+- Spin the Wheel
   
   * Animated spinning wheel
   
