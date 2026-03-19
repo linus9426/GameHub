@@ -9,7 +9,7 @@ The platform integrates user authentication and stores scores using modern backe
 
 🌐 **Live Demo**
 
-https://linus9426.github.io/GameHub/
+[GameHub](https://linus9426.github.io/GameHub/)
 
 🚀 **Features**
 
