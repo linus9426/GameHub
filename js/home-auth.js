@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 
 // ✅ Step 2: Initialize App Check BEFORE using Auth or Firestore
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // your new site key
+  provider: new ReCaptchaEnterpriseProvider ('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // your new site key
   isTokenAutoRefreshEnabled: true
 });
 
