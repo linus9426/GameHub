@@ -31,6 +31,14 @@ const db = getFirestore(app);
 
 console.log("Firebase initialized");
 
+// ================= APP CHECK =================
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
+
+const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaEnterpriseProvider('6Lc0uZssAAAAAOy3oQ4rOr8LPkwak8LVeVrSbyH4'),
+  isTokenAutoRefreshEnabled: true
+});
+
 // ================= ELEMENTS =================
 const loginBtn = document.getElementById("login-btn");
 const showSignupBtn = document.getElementById("show-signup-btn");
