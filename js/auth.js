@@ -108,8 +108,7 @@ signupBtn.addEventListener("click", async () => {
     return;
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errorBox.innerText = "Please enter a valid email address.";
     errorBox.style.display = "block";
     return;
@@ -135,22 +134,26 @@ signupBtn.addEventListener("click", async () => {
     }
 
     // Create user in Firebase Auth
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
+    await createUserWithEmailAndPassword(auth, email, password);
+    console.log("User created in Auth, waiting for sign-in...");
 
-    // ⚡ Immediately sign in so Firestore sees request.auth
-    await signInWithEmailAndPassword(auth, email, password);
+    // Wait for the user to be fully signed in
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        unsubscribe(); // stop listening
 
-    // Write user data to Firestore
-    await setDoc(doc(db, "users", user.uid), {
-      email: email,
-      username: username,
-      createdAt: Date.now()
+        // Write user data to Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          email: email,
+          username: username,
+          createdAt: Date.now()
+        });
+
+        console.log("User stored in Firestore");
+        alert(`Account created successfully! Welcome, ${username}.`);
+        window.location.href = "index.html";
+      }
     });
-
-    console.log("User stored in Firestore");
-    alert(`Account created successfully! Welcome, ${username}.`);
-    window.location.href = "index.html";
 
   } catch (error) {
     console.error("Signup error:", error.code);
@@ -160,4 +163,3 @@ signupBtn.addEventListener("click", async () => {
     errorBox.style.display = "block";
   }
 });
-
