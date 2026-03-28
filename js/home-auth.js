@@ -16,14 +16,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// App Check (non-Enterprise)
+// ✅ App Check (ReCaptcha V3, non-Enterprise)
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'),
+  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // replace with your site key
   isTokenAutoRefreshEnabled: true
 });
-
 console.log("home-auth.js: App Check initialized");
 
+// Initialize Auth and Firestore
 const auth = getAuth(app);
 const db = getFirestore(app);
 
@@ -42,11 +42,12 @@ onAuthStateChanged(auth, async (user) => {
     try {
       const userDoc = await getDoc(doc(db, "users", user.uid));
       if (userDoc.exists()) {
-        const userData = userDoc.data();
-        displayUsername.textContent = `Welcome, ${userData.username}`;
-        console.log("home-auth.js: Username displayed", userData.username);
+        const { username } = userDoc.data();
+        displayUsername.textContent = `Welcome, ${username}`;
+        console.log("home-auth.js: Username displayed", username);
       } else {
         displayUsername.textContent = "";
+        console.warn("home-auth.js: No user data found in Firestore");
       }
     } catch (error) {
       console.error("home-auth.js: Error fetching user data", error);
@@ -56,6 +57,7 @@ onAuthStateChanged(auth, async (user) => {
     signinLink.style.display = "inline-block";
     signoutBtn.style.display = "none";
     displayUsername.textContent = "";
+    console.log("home-auth.js: No user logged in");
   }
 });
 
