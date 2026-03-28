@@ -32,10 +32,12 @@ const db = getFirestore(app);
 console.log("Firebase initialized");
 
 // ================= APP CHECK =================
-import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
+// Import App Check
+import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
 
+// Initialize App Check with normal reCAPTCHA v3
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaEnterpriseProvider('6Lc0uZssAAAAAOy3oQ4rOr8LPkwak8LVeVrSbyH4'),
+  provider: new ReCaptchaV3Provider('YOUR_SITE_KEY_HERE'), // replace with your site key
   isTokenAutoRefreshEnabled: true
 });
 
