@@ -30,7 +30,7 @@ const app = initializeApp(firebaseConfig);
 
 // ✅ Step 2: Initialize App Check **after the app exists**
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // your new V3 site key
+  provider: new ReCaptchaEnterpriseProvider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // your new V3 site key
   isTokenAutoRefreshEnabled: true
 });
 
