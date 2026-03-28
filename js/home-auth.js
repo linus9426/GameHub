@@ -3,25 +3,28 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// ================= APP CHECK =================
-import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
-
-const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaEnterpriseProvider('6Lc0uZssAAAAAOy3oQ4rOr8LPkwak8LVeVrSbyH4'),
-  isTokenAutoRefreshEnabled: true
-});
-
-// ===== Firebase Config =====
+// ================= FIREBASE CONFIG =================
 const firebaseConfig = {
   apiKey: "AIzaSyC1c89hLKibBXtXVwsj-Rdm_1XoLPKjn_U",
   authDomain: "auth-a5431.firebaseapp.com",
   projectId: "auth-a5431"
 };
 const app = initializeApp(firebaseConfig);
-console.log("home-auth.js: Firebase initialized");
-
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+console.log("home-auth.js: Firebase initialized");
+
+// ================= APP CHECK =================
+import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
+
+// Initialize App Check with normal reCAPTCHA v3
+const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // <-- your new site key
+  isTokenAutoRefreshEnabled: true
+});
+
+console.log("home-auth.js: App Check initialized");
 
 // ===== DOM Elements =====
 const signinLink = document.getElementById("signin-link");
