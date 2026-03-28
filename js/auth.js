@@ -23,24 +23,23 @@ const firebaseConfig = {
   apiKey: "AIzaSyC1c89hLKibBXtXVwsj-Rdm_1XoLPKjn_U",
   authDomain: "auth-a5431.firebaseapp.com",
   projectId: "auth-a5431",
-  appId: "1:383548464781:web:6f289215d0a4f4d9878cc4"
+  appId: "1:383548464781:web:6f289215d0a4f4d9878cc4" // <- add your App ID
 };
 
-// ✅ Step 1: Initialize Firebase app
+// ✅ Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 
-// ✅ Step 2: Initialize App Check (non-Enterprise)
+// ✅ Standard App Check with reCAPTCHA v3
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // your free reCAPTCHA v3 site key
+  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'),
   isTokenAutoRefreshEnabled: true
 });
 
 console.log("App Check initialized");
 
-// ✅ Step 3: Initialize Auth and Firestore
+// ✅ Initialize Auth and Firestore
 const auth = getAuth(app);
 const db = getFirestore(app);
-
 console.log("Firebase initialized");
 
 // ================= ELEMENTS =================
@@ -54,7 +53,7 @@ const loginForm = document.getElementById("login-form");
 // ================= LOGIN FORM =================
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (signupBtn.style.display === "block") return; // ignore if in signup mode
+  if (signupBtn.style.display === "block") return;
 
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
@@ -114,7 +113,6 @@ signupBtn.addEventListener("click", async () => {
   const confirmPassword = document.getElementById("confirm-password").value;
   const username = document.getElementById("username").value.trim();
 
-  // Validation
   if (!email || !password || !confirmPassword || !username) {
     errorBox.innerText = "Please fill all fields.";
     errorBox.style.display = "block";
@@ -152,8 +150,8 @@ signupBtn.addEventListener("click", async () => {
     console.log("User created in Auth:", user.uid);
 
     await setDoc(doc(db, "users", user.uid), {
-      email,
-      username,
+      email: email,
+      username: username,
       createdAt: Date.now()
     });
 
