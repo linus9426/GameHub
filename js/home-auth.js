@@ -9,7 +9,8 @@ console.log("home-auth.js loaded");
 const firebaseConfig = {
   apiKey: "AIzaSyC1c89hLKibBXtXVwsj-Rdm_1XoLPKjn_U",
   authDomain: "auth-a5431.firebaseapp.com",
-  projectId: "auth-a5431"
+  projectId: "auth-a5431",
+  appId: "1:383548464781:web:6f289215d0a4f4d9878cc4"
 };
 
 // Initialize Firebase
