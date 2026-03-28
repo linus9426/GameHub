@@ -16,6 +16,9 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+// ===== APP CHECK IMPORT =====
+import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
+
 console.log("auth.js loaded");
 
 // ================= FIREBASE CONFIG =================
@@ -32,14 +35,13 @@ const db = getFirestore(app);
 console.log("Firebase initialized");
 
 // ================= APP CHECK =================
-// Import App Check
-import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
-
-// Initialize App Check with normal reCAPTCHA v3
+// Use **normal reCAPTCHA v3** (free plan)
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('YOUR_SITE_KEY_HERE'), // replace with your site key
+  provider: new ReCaptchaV3Provider('6LcN0pssAAAAAN3gn52IVS3dMmqZBNfo3Sxx67YA'), // <-- your new key
   isTokenAutoRefreshEnabled: true
 });
+
+console.log("App Check initialized");
 
 // ================= ELEMENTS =================
 const loginBtn = document.getElementById("login-btn");
