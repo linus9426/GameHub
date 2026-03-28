@@ -24,10 +24,8 @@ const firebaseConfig = {
   appId: "1:383548464781:web:6f289215d0a4f4d9878cc4"
 };
 
-// Initialize Firebase app
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Auth and Firestore
 const auth = getAuth(app);
 const db = getFirestore(app);
 console.log("Firebase initialized");
@@ -103,6 +101,7 @@ signupBtn.addEventListener("click", async () => {
   const confirmPassword = document.getElementById("confirm-password").value;
   const username = document.getElementById("username").value.trim();
 
+  // Validate input
   if (!email || !password || !confirmPassword || !username) {
     errorBox.innerText = "Please fill all fields.";
     errorBox.style.display = "block";
@@ -135,10 +134,11 @@ signupBtn.addEventListener("click", async () => {
       return;
     }
 
+    // Create user
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-    console.log("User created in Auth:", user.uid);
 
+    // Write to Firestore AFTER user is authenticated
     await setDoc(doc(db, "users", user.uid), {
       email: email,
       username: username,
